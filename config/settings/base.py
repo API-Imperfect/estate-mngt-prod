@@ -44,7 +44,14 @@ THIRD_PARTY_APPS = [
     "django_celery_beat",
 ]
 
-LOCAL_APPS = []
+LOCAL_APPS = [
+    "core_apps.issues",
+    "core_apps.users",
+    "core_apps.common",
+    "core_apps.profiles",
+    "core_apps.ratings",
+    "core_apps.posts",
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
