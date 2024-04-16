@@ -10,8 +10,10 @@ services:
     volumes:
       - .:/app:z
       - ./staticfiles:/app/staticfiles
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - "8000:8000"
+    expose:
+      - "8000"
     env_file:
       - ./.envs/.env.local
     depends_on:
@@ -58,13 +60,32 @@ services:
       dockerfile: ./docker/local/Dockerfile
     container_name: estate_client
     image: estate_client
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
+    expose:
+      - "3000"
     volumes:
       - ./client:/app
       - /app/node_modules
     networks:
       - estate_prod_nw
+  
+  nginx:
+    build:
+      context: ./docker/local/nginx
+      dockerfile: Dockerfile
+    restart: always
+    container_name: estate_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./staticfiles:/app/staticfiles
+      - logs_store:/var/log/nginx
+    depends_on:
+      - api
+    networks:
+      - estate_prod_nw
+    
 
 networks:
   estate_prod_nw:
@@ -73,5 +94,6 @@ networks:
 volumes:
   estate_prod_postgres_data: {}
   estate_prod_mailpit_data: {}
+  logs_store: {}
 
 
