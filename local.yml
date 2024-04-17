@@ -19,6 +19,7 @@ services:
     depends_on:
       - postgres
       - mailpit
+      - redis
     command: /start
     networks:
       - estate_prod_nw
@@ -69,6 +70,36 @@ services:
       - /app/node_modules
     networks:
       - estate_prod_nw
+
+  redis:
+    image: redis:7.0-alpine3.19
+    command: redis-server --appendonly yes
+    container_name: estate_redis
+    volumes:
+      - estate_redis_prod_data:/data
+    networks:
+      - estate_prod_nw
+
+  celeryworker:
+    <<: *api
+    image: estate_prod_celeryworker
+    container_name: estate_prod_celeryworker
+    command: /start-celeryworker
+
+  celerybeat:
+    <<: *api
+    image: estate_prod_celerybeat
+    container_name: estate_prod_celerybeat
+    command: /start-celerybeat
+
+  flower:
+    <<: *api
+    image: estate_prod_flower
+    container_name: estate_prod_flower
+    ports:
+      - "5555:5555"
+    command: /start-flower
+
   
   nginx:
     build:
@@ -95,5 +126,6 @@ volumes:
   estate_prod_postgres_data: {}
   estate_prod_mailpit_data: {}
   logs_store: {}
+  estate_redis_prod_data: {}
 
 
