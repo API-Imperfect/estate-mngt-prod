@@ -47,7 +47,9 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 
             if access_token and refresh_token:
                 set_auth_cookies(
-                    token_res, access_token=access_token, refresh_token=refresh_token
+                    token_res,
+                    access_token=access_token,
+                    refresh_token=refresh_token,
                 )
 
                 token_res.data.pop("access", None)
@@ -76,7 +78,9 @@ class CustomTokenRefreshView(TokenRefreshView):
 
             if access_token and refresh_token:
                 set_auth_cookies(
-                    refresh_res, access_token=access_token, refresh_token=refresh_token
+                    refresh_res,
+                    access_token=access_token,
+                    refresh_token=refresh_token,
                 )
 
                 refresh_res.data.pop("access", None)
@@ -104,7 +108,9 @@ class CustomProviderAuthView(ProviderAuthView):
 
             if access_token and refresh_token:
                 set_auth_cookies(
-                    provider_res, access_token=access_token, refresh_token=refresh_token
+                    provider_res,
+                    access_token=access_token,
+                    refresh_token=refresh_token,
                 )
 
                 provider_res.data.pop("access", None)

@@ -1,0 +1,17 @@
+{% extends "emails/base.html" %}
+
+{% block title %} Issue Resolved {% endblock title %}
+
+{% block content %}
+<p>Dear {{ issue.reported_by.get_full_name }},</p>
+<p>Your reported issue titled "<strong>{{ issue.title }}</strong>" has been resolved.</p>
+<p>Description: {{ issue.description }}</p>
+<p>Resolved By: <strong>{{ issue.assigned_to.get_full_name }} </strong>
+</p>
+<p>Resolved On: <strong>{{ issue.resolved_on }}</strong>
+</p>
+<p>Thank you bringing this to our attention.</p>
+<p>Regards,<br>
+  The {{ site_name }} Team
+</p>
+{% endblock content %}

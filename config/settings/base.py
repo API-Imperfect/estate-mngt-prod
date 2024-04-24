@@ -187,7 +187,9 @@ CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 CELERY_WORKER_SEND_TASK_EVENTS = True
 
 CELERY_BEAT_SCHEDULE = {
-    "update-reputations-every-day": {"task": "update_all_reputations"}
+    "update-reputations-every-day": {
+        "task": "update_all_reputations",
+    }
 }
 
 CLOUDINARY_CLOUD_NAME = getenv("CLOUDINARY_CLOUD_NAME")
@@ -211,7 +213,7 @@ REST_FRAMEWORK = {
         "core_apps.common.cookie_auth.CookieAuthentication",
     ),
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-    "DEFAULT_PAGINATION_CLASS": ("rest_framework.pagination.PageNumberPagination",),
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend",
     ],
