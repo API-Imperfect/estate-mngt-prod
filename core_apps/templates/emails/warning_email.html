@@ -1,0 +1,19 @@
+{% extends "emails/base.html" %}
+
+{% block title %} You have been reported! {% endblock title %}
+
+{% block content %}
+<p>Dear {{ user.first_name }} {{ user.last_name }},</p>
+<p>You have been reported for the following issue:</p>
+<p><strong>{{ title }}</strong></p>
+<p>Description: <strong> {{ description }}</strong></p>
+<p>Kindly address this issue, to avoid further complaints and reports by other tenants</p>
+<p>Please note that if you are reported 5 times your account will be deactivated, and you shall be served a 30-day
+  eviction notice
+</p>
+<p>This is per the tenancy terms and conditions that you agreed and signed on, when you joined us.
+</p>
+<p>Regards,<br>
+  The {{ site_name }} Team
+</p>
+{% endblock content %}
