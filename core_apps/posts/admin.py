@@ -1,7 +1,4 @@
-from typing import Any
 from django.contrib import admin
-from django.db.models.query import QuerySet
-from django.http import HttpRequest
 from .models import Post
 from django.contrib.contenttypes.models import ContentType
 from core_apps.common.admin import ContentViewInline
