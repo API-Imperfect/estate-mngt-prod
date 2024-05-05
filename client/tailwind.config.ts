@@ -34,6 +34,10 @@ const config = {
 				"accordion-down": "accordion-down 0.2s ease-out",
 				"accordion-up": "accordion-up 0.2s ease-out",
 			},
+			fontFamily: {
+				openSans: ["var(--font-openSans)"],
+				robotoSlab: ["var(--font-robotoSlab)"],
+			},
 		},
 	},
 	plugins: [require("tailwindcss-animate")],
