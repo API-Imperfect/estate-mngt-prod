@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import { openSans, robotoSlab } from "@/lib/fonts";
 import type { Metadata } from "next";
 import React from "react";
@@ -16,7 +17,14 @@ export default function RootLayout({
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<body className={`${openSans.variable} ${robotoSlab.variable}`}>
-				{children}
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	);
