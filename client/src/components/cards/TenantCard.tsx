@@ -24,10 +24,12 @@ import {
 import { formatDate } from "@/utils";
 import ProtectedRoute from "../shared/ProtectedRoutes";
 import { Avatar, AvatarImage } from "../ui/avatar";
+import { useAppSelector } from "@/lib/redux/hooks/typedHooks";
 
 function TenantCardContent() {
 	const { theme } = useTheme();
-	const { data, isLoading } = useGetAllUsersQuery({});
+	const searchTerm = useAppSelector((state) => state.user.searchTerm);
+	const { data, isLoading } = useGetAllUsersQuery({ searchTerm });
 
 	if (isLoading) {
 		return (
@@ -50,7 +52,7 @@ function TenantCardContent() {
 						<Card key={tenant.id}>
 							<CardContent className="rounded-lg p-4">
 								<CardHeader className="flex-col-center text-center">
-									<Avatar className="border-pumpkin mx-auto size-32 overflow-hidden rounded-full border-4 object-cover">
+									<Avatar className="border-pumpkin mx-auto size-28 overflow-hidden rounded-full border-4 object-cover">
 										<AvatarImage
 											alt="User profile avatar"
 											src={
@@ -59,8 +61,6 @@ function TenantCardContent() {
 													? "/assets/icons/user-profile-circle.svg"
 													: "/assets/icons/user-profile-light-circle.svg")
 											}
-											width={200}
-											height={200}
 										/>
 									</Avatar>
 									<CardTitle className="h3-semibold font-robotoSlab dark:text-platinum">
