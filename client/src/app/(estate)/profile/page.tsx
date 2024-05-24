@@ -1,5 +1,4 @@
 import ProtectedRoute from "@/components/shared/ProtectedRoutes";
-import Spinner from "@/components/shared/Spinner";
 
 import React from "react";
 
