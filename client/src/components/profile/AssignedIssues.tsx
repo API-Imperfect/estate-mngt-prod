@@ -1,4 +1,5 @@
 "use client";
+
 import { useGetMyAssignedIssuesQuery } from "@/lib/redux/features/issues/issueApiSlice";
 import React from "react";
 import Spinner from "../shared/Spinner";
@@ -17,6 +18,7 @@ export default function AssignedIssues() {
 			</div>
 		);
 	}
+
 	return (
 		<TabsContent value="assigned-issues">
 			<h2 className="h2-semibold flex-center font-robotoSlab dark:text-pumpkin text-xl">

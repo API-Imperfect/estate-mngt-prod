@@ -47,15 +47,17 @@ export default function IssueCard({ issue }: IssueCardProps) {
 						</p>
 					</CardDescription>
 				</CardContent>
+
 				<CardContent>
 					<CardDescription className="dark:text-platinum">
 						<p className="flex items-center space-x-2">
 							<Hotel className="tab-icon" />
-							<span className="tab-font">Apartment Number:</span>
+							<span className="tab-font">Apartment Number: </span>
 							<span className="text-lg">{issue.apartment_unit}</span>
 						</p>
 					</CardDescription>
 				</CardContent>
+
 				<CardFooter className="dark:text-babyPowder flex flex-row justify-between">
 					<p>
 						<span className="mr-0.5 font-bold">Status: </span>

@@ -1,8 +1,9 @@
 "use client";
 
 import { useGetMyIssuesQuery } from "@/lib/redux/features/issues/issueApiSlice";
+import React from "react";
 import Spinner from "../shared/Spinner";
-import { TabsContent } from "@/components/ui/tabs";
+import { TabsContent } from "../ui/tabs";
 import IssueCard from "../cards/IssueCard";
 
 export default function Issues() {
