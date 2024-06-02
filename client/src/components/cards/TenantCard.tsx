@@ -123,7 +123,7 @@ function TenantCardContent() {
 					<p>No tenants found</p>
 				)}
 			</div>
-			<PaginationSection totalPages={totalPages} />
+			<PaginationSection totalPages={totalPages} entityType="user" />
 		</div>
 	);
 }
