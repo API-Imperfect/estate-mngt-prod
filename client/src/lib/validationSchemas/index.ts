@@ -33,3 +33,6 @@ export { replySchema } from "./PostReplySchema";
 
 export type { TPostUpdateSchema } from "./PostUpdateSchema";
 export { postUpdateSchema } from "./PostUpdateSchema";
+
+export type { TReplyCreateSchema } from "./ReplyCreateSchema";
+export { replyCreateSchema } from "./ReplyCreateSchema";

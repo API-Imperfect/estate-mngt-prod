@@ -7,7 +7,7 @@ import {
 	useUpvotePostMutation,
 } from "@/lib/redux/features/posts/postApiSlice";
 import { toast } from "react-toastify";
-import { Card, CardHeader } from "../ui/card";
+import { Card, CardContent, CardHeader } from "../ui/card";
 import { AuthFormHeader } from "../forms/auth";
 import PostHeader from "./PostHeader";
 import PostActions from "./PostActions";
@@ -17,6 +17,7 @@ import ProtectedRoute from "../shared/ProtectedRoutes";
 import { getRepliesText, sortByDateDescending } from "@/utils";
 import { MessageCircleMoreIcon } from "lucide-react";
 import RepliesList from "./RepliesList";
+import CreateReplyForm from "../forms/add-reply/CreateReplyForm";
 
 interface PostDetailsProps {
 	params: {
@@ -96,6 +97,13 @@ function PostDetailsContent({ params }: PostDetailsProps) {
 					<p className="text-lg">This Post does&apos;t have any replies yet</p>
 				)}
 			</div>
+
+			<CardContent className="border-b-eerieBlack dark:border-gray dark:text-platinum border-b border-dashed">
+				<h2 className="h2-semibold dark:text-pumpkin mt-3">
+					Add your reply here
+				</h2>
+				<CreateReplyForm slug={post?.slug} />
+			</CardContent>
 		</Card>
 	);
 }
