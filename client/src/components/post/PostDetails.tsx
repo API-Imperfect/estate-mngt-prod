@@ -14,6 +14,9 @@ import PostActions from "./PostActions";
 import PostBody from "./PostBody";
 import PostFooter from "./PostFooter";
 import ProtectedRoute from "../shared/ProtectedRoutes";
+import { getRepliesText, sortByDateDescending } from "@/utils";
+import { MessageCircleMoreIcon } from "lucide-react";
+import RepliesList from "./RepliesList";
 
 interface PostDetailsProps {
 	params: {
@@ -31,6 +34,8 @@ function PostDetailsContent({ params }: PostDetailsProps) {
 		useDownvotePostMutation();
 	const [bookmarkPost, { isLoading: isBookmarkLoading }] =
 		useBookmarkPostMutation();
+
+	const sortedReplies = sortByDateDescending(post?.replies ?? [], "created_at");
 
 	const handleUpvote = () => {
 		post?.id && upvotePost(post.id);
@@ -77,6 +82,20 @@ function PostDetailsContent({ params }: PostDetailsProps) {
 			</CardHeader>
 			<PostBody body={post?.body} slug={post?.slug} />
 			<PostFooter tags={post?.tags} replies_count={post?.replies_count} />
+
+			<div className="border-b-eerieBlack dark:border-gray dark:text-platinum ml-4 space-y-4 border-b border-dashed py-4">
+				<span className="font-robotoSlab dark:text-pumpkin flex flex-row items-center text-lg font-semibold">
+					<MessageCircleMoreIcon className="tab-icon text-electricIndigo mr-2" />
+					{getRepliesText(post?.replies_count)}
+				</span>
+				{sortedReplies && sortedReplies.length > 0 ? (
+					sortedReplies.map((reply) => (
+						<RepliesList key={reply.id} reply={reply} />
+					))
+				) : (
+					<p className="text-lg">This Post does&apos;t have any replies yet</p>
+				)}
+			</div>
 		</Card>
 	);
 }
