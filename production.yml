@@ -1,0 +1,101 @@
+services:
+  api: &api
+    build:
+      context: .
+      dockerfile: ./docker/production/django/Dockerfile
+    volumes:
+      - static_volume:/app/staticfiles
+    expose:
+      - "8000"
+    env_file:
+      - ./.envs/.env.production
+    depends_on:
+      - postgres
+      - redis
+    command: /start
+    networks:
+      - estate_prod_nw
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./docker/production/postgres/Dockerfile
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - ./.envs/.env.production
+    networks:
+      - estate_prod_nw
+  
+  client:
+    build:
+      context: ./client
+      dockerfile: ./docker/production/Dockerfile
+    env_file:
+      - "./client/.env.production"
+    expose:
+      - "3000"
+    networks:
+      - estate_prod_nw
+
+  redis:
+    image: redis:7.0-alpine3.19
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - estate_prod_nw
+  
+  celeryworker:
+    <<: *api
+    command: /start-celeryworker
+
+  flower:
+    <<: *api
+    ports:
+      - "5555:5555"
+    command: /start-flower
+
+  celerybeat:
+    build:
+      context: .
+      dockerfile: ./docker/production/django/Dockerfile
+    command: /start-celerybeat
+    volumes:
+      - static_volume:/app/staticfiles
+    env_file:
+      - ./.envs/.env.production
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - estate_prod_nw
+
+  nginx:
+    build:
+      context: ./docker/production/nginx
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/production/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - static_volume:/app/staticfiles
+    depends_on:
+      - api
+      - client
+    networks:
+      - estate_prod_nw
+
+networks:
+  estate_prod_nw:
+    external: true
+
+volumes:
+  static_volume:
+  postgres_data:
+  redis_data:
+
+
+  
