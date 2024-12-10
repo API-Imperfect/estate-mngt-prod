@@ -1,0 +1,1113 @@
+{
+	"info": {
+		"_postman_id": "805ce346-70f0-41c9-8c5f-cddfcd73ee65",
+		"name": "Django & Next.js Estate Mngt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1757650"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\t\n\t\"username\":\"maryjane\",\n\t\"first_name\":\"Mary\",\n\t\"last_name\":\"Jane\",\n\t\"email\":\"api.imperfect@gmail.com\",\n\t\"password\": \"Pass123456\",\n\t\"re_password\":\"Pass123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{production-url}}/api/v1/auth/users/",
+							"host": [
+								"{{production-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"mary.jane@gmail.com\",\n\t\"password\":\"Pass123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{production-url}}/api/v1/auth/login/",
+							"host": [
+								"{{production-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh JWT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/auth/refresh/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"uid\":\"MQ\",\n\t\"token\":\"c5zosd-74ec73e112bcb8a2d82b13e7f8607569\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/auth/users/activation/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"users",
+								"activation",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Currently logged in User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/auth/users/me/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"users",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"mary.jane@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/auth/users/reset_password/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"users",
+								"reset_password",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Confirmation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"uid\":\"Mw\",\n\t\"token\":\"c5qlr0-0a601d5c4b36329aedaebe61e818a7ef\",\n\t\"new_password\":\"Pass1234567\",\n\t\"re_new_password\":\"Pass1234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/auth/users/reset_password_confirm/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"users",
+								"reset_password_confirm",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{production-url}}/api/v1/auth/logout/",
+							"host": [
+								"{{production-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Google Authorization url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/auth/o/google-oauth2/?redirect_uri=http://localhost:8080/api/v1/auth/google",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"o",
+								"google-oauth2",
+								""
+							],
+							"query": [
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8080/api/v1/auth/google"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login With Google",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local-url}}/api/v1/auth/o/google-oauth2/?state=9ScYkwAu1xGWKASWka4YiHlsc4Sb25TS&code=4%2F0AdLIrYeSTUvV4KiFfgGW3CRo17YWnHCgMLDin96bii5p0JJTuz2QTE7sA2FyJP0RsmKkZg",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"o",
+								"google-oauth2",
+								""
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "9ScYkwAu1xGWKASWka4YiHlsc4Sb25TS"
+								},
+								{
+									"key": "code",
+									"value": "4%2F0AdLIrYeSTUvV4KiFfgGW3CRo17YWnHCgMLDin96bii5p0JJTuz2QTE7sA2FyJP0RsmKkZg"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profiles",
+			"item": [
+				{
+					"name": "Get All Profiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/profiles/all/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profiles",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/profiles/user/my-profile/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profiles",
+								"user",
+								"my-profile",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\": \"Mary\",\n\t\"last_name\": \"Jane\",\n\t\"username\": \"maryjane\",\n\t\"gender\": \"female\",\n\t\"bio\": \"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.\",\n\t\"occupation\": \"tenant\",\n\t\"phone_number\": \"+250788988226\",\n\t\"country_of_origin\": \"Rwanda\",\n\t\"city_of_origin\": \"Kigali\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/profiles/user/update/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profiles",
+								"user",
+								"update",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Avatar",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/Users/alphaogilo/Desktop/images/sample images/mary Jane.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/profiles/user/avatar/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profiles",
+								"user",
+								"avatar",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Technician profiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/profiles/non-tenant-profiles/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"profiles",
+								"non-tenant-profiles",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Issues",
+			"item": [
+				{
+					"name": "Get all Reported Issues",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/issues/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"issues",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Issue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Toilet Mulfunction\",\n\t\"description\":\"The Master bedroom toilet does not release me from what I have done to it, and just flush...\",\n\t\"status\":\"reported\",\n\t\"priority\":\"high\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/issues/create/9451930d-3d5a-4dcf-b482-b0935338cd4b/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"issues",
+								"create",
+								"9451930d-3d5a-4dcf-b482-b0935338cd4b",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Issues",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/issues/me/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"issues",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Issue Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/issues/d5583610-2e4b-4b15-9fa2-f24a89856d33/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"issues",
+								"d5583610-2e4b-4b15-9fa2-f24a89856d33",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Issue",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"status\":\"resolved\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/issues/update/d5583610-2e4b-4b15-9fa2-f24a89856d33/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"issues",
+								"update",
+								"d5583610-2e4b-4b15-9fa2-f24a89856d33",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Issue",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/issues/delete/d5583610-2e4b-4b15-9fa2-f24a89856d33/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"issues",
+								"delete",
+								"d5583610-2e4b-4b15-9fa2-f24a89856d33",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Assigned Issues",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/issues/assigned/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"issues",
+								"assigned",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Apartment",
+			"item": [
+				{
+					"name": "Add Your Apartment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"unit_number\":\"A1\",\n\t\"building\":\"Alpha 1\",\n\t\"floor\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/apartments/add/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"apartments",
+								"add",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Apartment Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/apartments/my-apartment/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"apartments",
+								"my-apartment",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Create Report",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"Loud music and parties at night\",\n\t\"description\":\"The tenant on apartment A2 plays very loud music the whole night and hosts parties consistenly through the day and night even on weekdays. My kids can't sleep and its becoming a nightmare to live here\",\n\t\"reported_user_username\":\"api.imperfect\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/reports/create/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reports",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Reports",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/reports/me/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"reports",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ratings",
+			"item": [
+				{
+					"name": "Add user rating",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"rated_user_username\":\"plumber_jack\",\n\t\"rating\": 3,\n\t\"comment\":\"This guy was so unprofessional\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/ratings/create/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ratings",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Get All Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{production-url}}/api/v1/posts/",
+							"host": [
+								"{{production-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Who ate the food that was cooling by my window?\",\n\t\"tags\":[\"food\",\"theft\"],\n\t\"body\":\"I left my chips and chicken by my window, to cool for like 10 mins, only to to get that someone had opened my window and helped themselves to my food. How can we live like this?\"\n\t\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/create/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"create",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\":\"I beg you, please return my food\",\n\t\"body\":\"someone did not actually help themselves to my lunch, but actually stole it\",\n\t\"tags\":[\"stealing\",\"food\",\"bad neighbors\"]\n\n\t\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/who-ate-the-food-that-was-cooling-by-my-window/update/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"who-ate-the-food-that-was-cooling-by-my-window",
+								"update",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/who-ate-the-food-that-was-cooling-by-my-window/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"who-ate-the-food-that-was-cooling-by-my-window",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookmark Post",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/who-ate-the-food-that-was-cooling-by-my-window/bookmark/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"who-ate-the-food-that-was-cooling-by-my-window",
+								"bookmark",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Un Bookmark post",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/who-ate-the-food-that-was-cooling-by-my-window/unbookmark/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"who-ate-the-food-that-was-cooling-by-my-window",
+								"unbookmark",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Reply to Post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"body\":\"Stealing is bad!! Let's be good neighbors and just not take other people's items\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/8156a372-a793-4d1c-87a5-857f036b9d58/reply/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"8156a372-a793-4d1c-87a5-857f036b9d58",
+								"reply",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get replies for a post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/5d467b13-0854-4e80-9b17-97172c1b7747/replies/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"5d467b13-0854-4e80-9b17-97172c1b7747",
+								"replies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Bookmarked Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/bookmarked/posts/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"bookmarked",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upvote Post",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/5d467b13-0854-4e80-9b17-97172c1b7747/upvote/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"5d467b13-0854-4e80-9b17-97172c1b7747",
+								"upvote",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/my-posts/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"my-posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Downvote Post",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/5d467b13-0854-4e80-9b17-97172c1b7747/downvote/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"5d467b13-0854-4e80-9b17-97172c1b7747",
+								"downvote",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Popular Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/popular-tags/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"popular-tags",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Top Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/top-posts/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"top-posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Posts By Tag",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local-url}}/api/v1/posts/tags/stealing/",
+							"host": [
+								"{{local-url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"posts",
+								"tags",
+								"stealing",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
